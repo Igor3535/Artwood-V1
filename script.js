@@ -8,7 +8,9 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     document.querySelectorAll(".nav a").forEach((link) => {
-      link.addEventListener("click", () => nav.classList.remove("active"));
+      link.addEventListener("click", () => {
+        nav.classList.remove("active");
+      });
     });
   }
 
@@ -42,6 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
     lightbox.classList.remove("active");
     lightbox.setAttribute("aria-hidden", "true");
     lightboxImg.src = "";
+    lightboxImg.alt = "";
   }
 
   function showNextImage() {
@@ -59,18 +62,30 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   galleryImages.forEach((img, index) => {
-    img.addEventListener("click", () => openLightbox(index));
+    img.addEventListener("click", () => {
+      openLightbox(index);
+    });
   });
 
   if (closeBtn) closeBtn.addEventListener("click", closeLightbox);
-  if (nextBtn) nextBtn.addEventListener("click", showNextImage);
-  if (prevBtn) prevBtn.addEventListener("click", showPrevImage);
+
+  if (nextBtn) {
+    nextBtn.addEventListener("click", (event) => {
+      event.stopPropagation();
+      showNextImage();
+    });
+  }
+
+  if (prevBtn) {
+    prevBtn.addEventListener("click", (event) => {
+      event.stopPropagation();
+      showPrevImage();
+    });
+  }
 
   if (lightbox) {
     lightbox.addEventListener("click", (event) => {
-      if (event.target === lightbox) {
-        closeLightbox();
-      }
+      if (event.target === lightbox) closeLightbox();
     });
   }
 

@@ -543,3 +543,99 @@ cite {
   max-height: 88vh !important;
   object-fit: contain !important;
 }
+
+/* =========================================================
+   FINAL SERVICES PHOTO CARDS
+   Блок "Услуги" с фото-карточками вместо обычных текстовых карточек
+   ========================================================= */
+
+.services .service-photo-grid {
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  gap: 22px !important;
+  margin-top: 38px !important;
+}
+
+.services .service-photo-card {
+  position: relative !important;
+  min-height: 420px !important;
+  overflow: hidden !important;
+  border: 1px solid var(--line) !important;
+  background: var(--bg-soft) !important;
+}
+
+.services .service-photo-card img {
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 420px !important;
+  object-fit: cover !important;
+  display: block !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  transform: scale(1) !important;
+  transition: transform 0.45s ease, filter 0.45s ease !important;
+}
+
+.services .service-photo-card::after {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  background: linear-gradient(180deg, rgba(7, 6, 4, 0.05) 0%, rgba(7, 6, 4, 0.42) 48%, rgba(7, 6, 4, 0.92) 100%) !important;
+  z-index: 1 !important;
+}
+
+.services .service-photo-content {
+  position: absolute !important;
+  left: 24px !important;
+  right: 24px !important;
+  bottom: 24px !important;
+  z-index: 2 !important;
+}
+
+.services .service-photo-content h3 {
+  margin: 0 0 12px !important;
+  color: var(--gold-soft) !important;
+  font-size: 28px !important;
+  line-height: 1.1 !important;
+}
+
+.services .service-photo-content p {
+  margin: 0 !important;
+  color: var(--text) !important;
+  font-size: 19px !important;
+  line-height: 1.45 !important;
+}
+
+.services .service-photo-card:hover {
+  border-color: rgba(227, 199, 141, 0.55) !important;
+}
+
+.services .service-photo-card:hover img {
+  transform: scale(1.06) !important;
+  filter: brightness(1.08) contrast(1.05) !important;
+}
+
+@media (max-width: 1200px) {
+  .services .service-photo-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .services .service-photo-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .services .service-photo-card,
+  .services .service-photo-card img {
+    min-height: 360px !important;
+  }
+
+  .services .service-photo-content h3 {
+    font-size: 25px !important;
+  }
+
+  .services .service-photo-content p {
+    font-size: 18px !important;
+  }
+}

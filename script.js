@@ -30,7 +30,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function openLightbox(index) {
     if (!lightbox || !lightboxImg || galleryImages.length === 0) return;
-
     currentImageIndex = index;
     lightboxImg.src = galleryImages[currentImageIndex].src;
     lightboxImg.alt = galleryImages[currentImageIndex].alt || "";
@@ -40,7 +39,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function closeLightbox() {
     if (!lightbox || !lightboxImg) return;
-
     lightbox.classList.remove("active");
     lightbox.setAttribute("aria-hidden", "true");
     lightboxImg.src = "";
@@ -49,22 +47,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function showNextImage() {
     if (galleryImages.length === 0) return;
-
     currentImageIndex = (currentImageIndex + 1) % galleryImages.length;
     openLightbox(currentImageIndex);
   }
 
   function showPrevImage() {
     if (galleryImages.length === 0) return;
-
     currentImageIndex = (currentImageIndex - 1 + galleryImages.length) % galleryImages.length;
     openLightbox(currentImageIndex);
   }
 
   galleryImages.forEach((img, index) => {
-    img.addEventListener("click", () => {
-      openLightbox(index);
-    });
+    img.addEventListener("click", () => openLightbox(index));
   });
 
   if (closeBtn) closeBtn.addEventListener("click", closeLightbox);
@@ -91,7 +85,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.addEventListener("keydown", (event) => {
     if (!lightbox || !lightbox.classList.contains("active")) return;
-
     if (event.key === "Escape") closeLightbox();
     if (event.key === "ArrowRight") showNextImage();
     if (event.key === "ArrowLeft") showPrevImage();

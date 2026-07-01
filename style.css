@@ -230,13 +230,16 @@ blockquote,
 }
 
 .gallery-grid figcaption {
-  position: absolute;
-  left: 16px;
-  bottom: 16px;
-  padding: 8px 12px;
-  background: rgba(7, 6, 4, 0.75);
-  color: var(--gold-soft);
-  border: 1px solid var(--line);
+    position: absolute;
+    left: 16px;
+    bottom: 16px;
+    padding: 8px 12px;
+    background: rgba(7, 6, 4, 0.75);
+    color: var(--gold-soft);
+    border: 1px solid var(--line);
+
+    font-size: 20px;      /* Размер текста */
+    font-weight: 600;      /* Немного жирнее */
 }
 
 /* ADVANTAGES */
